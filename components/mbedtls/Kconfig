@@ -451,6 +451,12 @@ menu "mbedTLS"
                 If writing certificate data only in DER format, disabling this
                 option will save some code size.
 
+        config MBEDTLS_X509_USE_C
+            bool "Enable X.509 usage"
+            default y
+            help
+                Enable X.509 certificate parsing
+
         config MBEDTLS_X509_CRL_PARSE_C
             bool "X.509 CRL parsing"
             default y
@@ -462,6 +468,18 @@ menu "mbedTLS"
             default y
             help
                 Support for parsing X.509 Certifificate Signing Requests
+
+        config MBEDTLS_X509_CRT_PARSE_C
+            bool "X.509 CSR parsing"
+            default y
+            help
+                Support for parsing X.509 Certifificate Signing Requests
+
+        config MBEDTLS_SSL_SERVER_NAME_INDICATION
+            bool "RFC 6066 server name indication (SNI) in SSL"
+            default n
+            help
+                Requires: X.509 CSR parsing
 
     endmenu # Certificates
 
