@@ -472,12 +472,14 @@ menu "mbedTLS"
         config MBEDTLS_X509_CRT_PARSE_C
             bool "X.509 CSR parsing"
             default y
+            depends on MBEDTLS_X509_USE_C
             help
                 Support for parsing X.509 Certifificate Signing Requests
 
         config MBEDTLS_SSL_SERVER_NAME_INDICATION
             bool "RFC 6066 server name indication (SNI) in SSL"
             default n
+            depends on MBEDTLS_X509_CRT_PARSE_C
             help
                 Requires: X.509 CSR parsing
 
